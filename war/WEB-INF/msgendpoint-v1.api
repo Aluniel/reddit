@@ -1,0 +1,73 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://reddit-fac-nantes.appspot.com/_ah/api",
+  "name" : "msgendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://reddit-fac-nantes.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "msgendpoint.msgEndpoint.getMsg" : {
+      "path" : "msgentity",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.getMsg",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "MsgEntity" : {
+        "id" : "MsgEntity",
+        "type" : "object",
+        "properties" : {
+          "idMsg" : {
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "string"
+          },
+          "sender" : {
+            "type" : "string"
+          },
+          "nbVotes" : {
+            "type" : "integer"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "org.miage.reddit.MsgEndpoint.getMsg" : {
+        "response" : {
+          "$ref" : "MsgEntity"
+        }
+      }
+    }
+  }
+}
