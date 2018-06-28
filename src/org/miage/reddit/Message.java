@@ -19,6 +19,7 @@ public class Message {
 	@Index
 	private String author;
 	
+	@Index
 	private int nbVotes;
 	
 	//
