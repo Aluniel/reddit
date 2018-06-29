@@ -13,14 +13,11 @@ public class Voter {
 	//
 	
 	@Id
-	private long idMsgIndex;
+	private String name;
 	
 	@Parent
 	@Index
-	private Key<Message> idMsg;	
-
-	@Index
-	private String name;
+	private Key<Message> idMsg;
 	
 	//
 	// METHODS
@@ -30,7 +27,16 @@ public class Voter {
 		
 	}
 	
-	public Voter(Message message, String name) {
-		
+	public Voter(Key<Message> message, String name) {
+		this.idMsg = message;
+		this.name  = name;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Key<Message> getIdMsg() {
+		return idMsg;
 	}
 }

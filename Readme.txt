@@ -1,0 +1,29 @@
+Projet Tiny reddit
+
+##########################
+##### Implémentation #####
+##########################
+
+- Alexandre CABEL
+- Adam OMOURKHAJIEV
+- Laura MATTINA
+
+#######################
+##### Application #####
+#######################
+
+http://1-dot-reddit-fac-nantes.appspot.com/
+
+####################
+##### API REST #####
+####################
+
+http://1-dot-reddit-fac-nantes.appspot.com/_ah/api/explorer
+
+Nom de l'API : tinyredditmsg
+
+##################
+##### Github #####
+##################
+
+https://github.com/Aluniel/reddit

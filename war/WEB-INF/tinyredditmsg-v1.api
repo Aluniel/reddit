@@ -1,0 +1,295 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://reddit-fac-nantes.appspot.com/_ah/api",
+  "name" : "tinyredditmsg",
+  "version" : "v1",
+  "description" : "Permet de gérer des messages",
+  "defaultVersion" : false,
+  "discovery" : [ "PUBLIC" ],
+  "adapter" : {
+    "bns" : "https://reddit-fac-nantes.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "msg.miage.org",
+  "ownerName" : "msg.miage.org",
+  "packagePath" : "services",
+  "methods" : {
+    "tinyredditmsg.message.getbyid" : {
+      "path" : "/getbyid/{idmsg}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.getMsg",
+      "request" : {
+        "parameters" : {
+          "idmsg" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.message.insert" : {
+      "path" : "/insert/user/message",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.postMsg",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "message" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.message.votefor" : {
+      "path" : "/votefor/{user}/{idmsg}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.voteFor",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idmsg" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.message.deleteall" : {
+      "path" : "/deleteall",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.deleteAll",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.messages.get" : {
+      "path" : "/get",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.getMsgs",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.message.voteagainst" : {
+      "path" : "/voteagainst/{user}/{idmsg}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.voteAgainst",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idmsg" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.message.canvote" : {
+      "path" : "/canvote/{user}/{idmsg}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.canVote",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          },
+          "idmsg" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "tinyredditmsg.messages.getmine" : {
+      "path" : "/getmine/{user}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.getMyMsgs",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Message" : {
+        "id" : "Message",
+        "type" : "object",
+        "properties" : {
+          "idMsg" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "nbVotes" : {
+            "type" : "integer"
+          },
+          "content" : {
+            "type" : "string"
+          },
+          "sender" : {
+            "type" : "string"
+          }
+        }
+      },
+      "MessageCollection" : {
+        "id" : "MessageCollection",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Message"
+            }
+          }
+        }
+      },
+      "CanVote" : {
+        "id" : "CanVote",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "canvote" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "org.miage.reddit.MsgEndpoint.getMsg" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.postMsg" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.voteFor" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.deleteAll" : {
+        "response" : {
+          "$ref" : "MessageCollection"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.getMsgs" : {
+        "response" : {
+          "$ref" : "MessageCollection"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.voteAgainst" : {
+        "response" : {
+          "$ref" : "Message"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.canVote" : {
+        "response" : {
+          "$ref" : "CanVote"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.getMyMsgs" : {
+        "response" : {
+          "$ref" : "MessageCollection"
+        }
+      }
+    }
+  }
+}
