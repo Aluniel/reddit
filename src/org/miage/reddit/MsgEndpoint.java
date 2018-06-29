@@ -1,6 +1,7 @@
 package org.miage.reddit;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import com.google.api.server.spi.config.Api;
@@ -26,21 +27,22 @@ public class MsgEndpoint {
 	
 	@ApiMethod(name = "messages.get", path = "/get")
 	public List<Message> getMsgs() {
-		return ofy().load().type(Message.class).order("-nbVotes").limit(10).list();
+		return ofy().load().type(Message.class).order("-nbVotes").limit(100).list();
 	}
 	
 	@ApiMethod(name = "messages.getmine", path = "/getmine/{user}")
 	public List<Message> getMyMsgs(@Named("user") String user) {
-		return ofy().load().type(Message.class).filter("author", user).order("nbVotes").list();
+		return ofy().load().type(Message.class).filter("author", user).limit(100).list();
 	}
 	
-	/*@ApiMethod(name = "messages.getvotedbyme", path = "/getvotedbyme/{user}")
-	public List<Message> getVotedByMe(@Named("user") String user) {
-		List<Voter> voters = ofy().load().type(Voter.class).filter("name", user).list();
-
+	@ApiMethod(name = "messages.getvotedbyme", path = "/getvotedbyme/{user}")
+	public Collection<Message> getVotedByMe(@Named("user") String user) {
+		List<Voter> voters = ofy().load().type(Voter.class).filterKey("=", user).list();
+		List<Key<Message>> keys = new ArrayList<Key<Message>>();
 		for(Voter voter : voters)
-		return ;
-	}*/
+			keys.add(voter.getIdMsg());
+		return ofy().load().keys(keys).values();
+	}
 	
 	@ApiMethod(name = "message.getbyid", path = "/getbyid/{idmsg}")
 	public Message getMsg(@Named("idmsg") long idMsg) {

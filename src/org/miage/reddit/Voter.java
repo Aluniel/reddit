@@ -12,6 +12,10 @@ public class Voter {
 	// FIELDS
 	//
 	
+	//@Id
+	//private Long id;
+	
+	//@Index
 	@Id
 	private String name;
 	

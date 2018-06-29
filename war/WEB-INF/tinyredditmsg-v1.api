@@ -200,6 +200,27 @@
       "response" : {
         "body" : "autoTemplate(backendResponse)"
       }
+    },
+    "tinyredditmsg.messages.getvotedbyme" : {
+      "path" : "/getvotedbyme/{user}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "org.miage.reddit.MsgEndpoint.getVotedByMe",
+      "request" : {
+        "parameters" : {
+          "user" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
@@ -286,6 +307,11 @@
         }
       },
       "org.miage.reddit.MsgEndpoint.getMyMsgs" : {
+        "response" : {
+          "$ref" : "MessageCollection"
+        }
+      },
+      "org.miage.reddit.MsgEndpoint.getVotedByMe" : {
         "response" : {
           "$ref" : "MessageCollection"
         }
