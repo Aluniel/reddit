@@ -1,4 +1,4 @@
-Projet Tiny reddit
+Projet TinyReddit
 
 //////////////////////////
 ///// Implémentation /////
